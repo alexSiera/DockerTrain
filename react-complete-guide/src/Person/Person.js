@@ -1,7 +1,8 @@
 import React from "react";
+import "./Person.css";
 const person = ({ name, age, children, click, changed }) => {
   return (
-    <div>
+    <div className="Person">
       <p onClick={click}>
         I'am {name} i am {age}
       </p>
