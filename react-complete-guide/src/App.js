@@ -9,11 +9,9 @@ class App extends Component {
         <p>This is reworking</p>
         <Person name="Max" age="28" />
         <Person name="Manu" age="29">
-          My hobbies: Racing
+          This is test children output
         </Person>
         <Person name="Alex" age="99" />
-
-        <Person />
       </div>
     );
     // return React.createElement(
