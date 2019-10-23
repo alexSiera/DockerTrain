@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 // import Person from "./Person/Person";
-import UserOutput from "./UserOutput/UserOutput";
-import UserInput from "./UserInput/UserInput";
+import Person from "./Person/Person";
 class App extends Component {
   state = {
     persons: [
@@ -17,14 +16,6 @@ class App extends Component {
       {
         name: "Stephanie",
         age: 26
-      }
-    ],
-    userName: [
-      {
-        name: "Alex1sdcdsd  "
-      },
-      {
-        name: "Igor"
       }
     ],
     otherState: "some other value"
@@ -66,15 +57,6 @@ class App extends Component {
       ]
     });
   };
-  onUserChange = () => {
-    this.setState({
-      userName: [
-        {
-          name: "ALOXADdodpwqdoqkdoqwkdowqkdowqko"
-        }
-      ]
-    });
-  };
   onInputEmit = event => {
     this.setState({
       userName: [
@@ -93,7 +75,7 @@ class App extends Component {
     };
     return (
       <div className="App">
-        {/* <h1>Hi, I'm a React App</h1>
+        <h1>Hi, I'm a React App</h1>
         <p style={style}>This is reworking</p>
         <button onClick={this.switchNameHandler.bind(this, "Maximilian")}>
           Switch Name
@@ -118,15 +100,6 @@ class App extends Component {
         <Person
           name={this.state.persons[2].name}
           age={this.state.persons[2].age}
-        /> */}
-        <UserOutput
-          userName={this.state.userName[0].name}
-          userChanged={this.onUserChange}
-        />
-        <UserOutput userName="Igor" />
-        <UserInput
-          onChange={this.onInputEmit}
-          userName={this.state.userName[0].name}
         />
       </div>
     );
