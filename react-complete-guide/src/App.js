@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 // import Person from "./Person/Person";
 import Person from "./Person/Person";
-import person from "./Person/Person";
 class App extends Component {
   state = {
     persons: [
@@ -21,25 +20,6 @@ class App extends Component {
     ],
     otherState: "some other value",
     showPersons: false
-  };
-  switchNameHandler = newName => {
-    // this.state.persons[0].name = "Maximilli";
-    this.setState({
-      persons: [
-        {
-          name: newName,
-          age: 333
-        },
-        {
-          name: "MAAAAAAAAAAAAAAAAAAAAAX",
-          age: 1234
-        },
-        {
-          name: "Stephanie",
-          age: 566
-        }
-      ]
-    });
   };
   nameChangedHandler = event => {
     this.setState({
@@ -72,7 +52,11 @@ class App extends Component {
     const doesShow = this.state.showPersons;
     this.setState({ showPersons: !doesShow });
   };
-
+  deletePersonHandler = personIndex => {
+    const persons = this.state.persons;
+    persons.splice(personIndex, 1);
+    this.setState({ persons });
+  };
   render() {
     const style = {
       backgroundColor: "yellow",
@@ -84,9 +68,14 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map(person => {
+          {this.state.persons.map((person, index) => {
             return (
-              <Person name={person.name} age={person.age} key={person.name} />
+              <Person
+                name={person.name}
+                age={person.age}
+                key={person.name}
+                click={() => this.deletePersonHandler(index)}
+              />
             );
           })}
         </div>
@@ -96,9 +85,7 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p style={style}>This is reworking</p>
-        <button onClick={this.switchNameHandler.bind(this, "Maximilian")}>
-          Switch Name
-        </button>
+        <button onClick={this.switchNameHandler}>Switch Name</button>
         <button onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
       </div>
