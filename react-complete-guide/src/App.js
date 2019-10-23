@@ -58,10 +58,16 @@ class App extends Component {
   };
 
   render() {
+    const style = {
+      backgroundColor: "yellow",
+      font: "inherit",
+      border: "1px solid blue",
+      padding: "8px"
+    };
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
-        <p>This is reworking</p>
+        <p style={style}>This is reworking</p>
         <button onClick={this.switchNameHandler.bind(this, "Maximilian")}>
           Switch Name
         </button>
