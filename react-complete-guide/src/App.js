@@ -16,10 +16,27 @@ class App extends Component {
         name: "Stephanie",
         age: 26
       }
-    ]
+    ],
+    otherState: "some other value"
   };
   switchNameHandler = () => {
-    console.log("Was clicked!");
+    // this.state.persons[0].name = "Maximilli";
+    this.setState({
+      persons: [
+        {
+          name: "Killer B",
+          age: 333
+        },
+        {
+          name: "MAAAAAAAAAAAAAAAAAAAAAX",
+          age: 1234
+        },
+        {
+          name: "Stephanie",
+          age: 566
+        }
+      ]
+    });
   };
   render() {
     return (
