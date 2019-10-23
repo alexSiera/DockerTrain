@@ -1,8 +1,17 @@
 import React from "react";
+import "./UserOutput.css";
 
-export const UserOutput = () => {
-  <div>
-    <p>Test paragraph</p>
-    <p></p>
-  </div>;
+const UserOutput = ({ userName, userChanged }) => {
+  const stylingUserOutput = {
+    color: "green"
+  };
+  return (
+    <div>
+      <p className="UserOutput" onClick={userChanged}>
+        {userName}
+      </p>
+      <p style={stylingUserOutput}>{userName}</p>
+    </div>
+  );
 };
+export default UserOutput;
