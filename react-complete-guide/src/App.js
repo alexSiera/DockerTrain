@@ -95,6 +95,14 @@ class App extends Component {
       );
       style.backgroundColor = 'red';
     }
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
+    }
+ 
     let charComponent = null;
     charComponent = (
       <div>
@@ -106,7 +114,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
-        <p>This is reworking</p>
+        <p className={classes.join(' ')}>This is reworking</p>
         {/* <button onClick={this.switchNameHandler}>Switch Name</button> */}
         <button onClick={this.togglePersonsHandler} style={style}>Toggle Persons</button>
         {persons}
