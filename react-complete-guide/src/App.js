@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "./App.css";
 // import Person from "./Person/Person";
 import Person from "./Person/Person";
+import ValidationComponent from "./ValidationComponent/ValidationComponent";
+import CharComponent from "./CharComponent/CharComponent";
+
 class App extends Component {
   state = {
     persons: [
@@ -22,7 +25,9 @@ class App extends Component {
       }
     ],
     otherState: "some other value",
-    showPersons: false
+    showPersons: false,
+    paragraphValue: [],
+    paragraphLength: 0
   };
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => p.id === id);
@@ -53,6 +58,11 @@ class App extends Component {
     persons.splice(personIndex, 1);
     this.setState({ persons });
   };
+  onChangeText = event => {
+    const paragraphValue = Array.from(event.target.value);
+    const paragraphLength = event.target.value.length;
+    this.setState({ paragraphLength, paragraphValue });
+  };
   render() {
     const style = {
       backgroundColor: "yellow",
@@ -78,6 +88,14 @@ class App extends Component {
         </div>
       );
     }
+    let charComponent = null;
+    charComponent = (
+      <div>
+        {this.state.paragraphValue.map((el, index)=> {
+          return (<CharComponent textValue={el} key={index}/>);
+        })}
+      </div>
+    );
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
@@ -85,6 +103,10 @@ class App extends Component {
         <button onClick={this.switchNameHandler}>Switch Name</button>
         <button onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
+        <p>{this.state.paragraphLength}</p>
+        <input onChange={this.onChangeText} />
+        <ValidationComponent inputTextLength={this.state.paragraphLength} />
+        {charComponent}
       </div>
     );
   }
