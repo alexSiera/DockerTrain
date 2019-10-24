@@ -68,13 +68,7 @@ class App extends Component {
     this.setState({ paragraphValue})
   }
   render() {
-    const style = {
-      backgroundColor: "green",
-      color: "white",
-      font: "inherit",
-      border: "1px solid blue",
-      padding: "8px",
-    };
+    let btnClass = '';
     let persons = null;
     if (this.state.showPersons) {
       persons = (
@@ -92,8 +86,7 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = 'red';
-      style.color = 'black'
+      btnClass = classes.Red;
     }
     const assignedClasses = [];
     if (this.state.persons.length <= 2) {
@@ -116,7 +109,7 @@ class App extends Component {
         <h1>Hi, I'm a React App</h1>
         <p className={assignedClasses.join(' ')}>This is reworking</p>
         {/* <button onClick={this.switchNameHandler}>Switch Name</button> */}
-        <button onClick={this.togglePersonsHandler} style={style}>Toggle Persons</button>
+        <button onClick={this.togglePersonsHandler} className={btnClass}>Toggle Persons</button>
         {persons}
         <p>{this.state.paragraphLength}</p>
         <input onChange={this.onChangeText} />
