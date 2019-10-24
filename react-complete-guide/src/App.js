@@ -63,6 +63,11 @@ class App extends Component {
     const paragraphLength = event.target.value.length;
     this.setState({ paragraphLength, paragraphValue });
   };
+  onCharDelete(index) {
+    const paragraphValue = [...this.state.paragraphValue];
+    paragraphValue.splice(index, 1);
+    this.setState({ paragraphValue})
+  }
   render() {
     const style = {
       backgroundColor: "yellow",
@@ -92,7 +97,7 @@ class App extends Component {
     charComponent = (
       <div>
         {this.state.paragraphValue.map((el, index)=> {
-          return (<CharComponent textValue={el} key={index}/>);
+          return (<CharComponent textValue={el} key={index} clickOnDelete={() => this.onCharDelete(index)}/>);
         })}
       </div>
     );
