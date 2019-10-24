@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import classes from "./App.css";
 // import Person from "./Person/Person";
 import Person from "./Person/Person";
 import ValidationComponent from "./ValidationComponent/ValidationComponent";
@@ -92,13 +92,15 @@ class App extends Component {
           })}
         </div>
       );
+      style.backgroundColor = 'red';
+      style.color = 'black'
     }
-    const classes = [];
+    const assignedClasses = [];
     if (this.state.persons.length <= 2) {
-      classes.push('red');
+      assignedClasses.push(classes.red);
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
  
     let charComponent = null;
@@ -110,9 +112,9 @@ class App extends Component {
       </div>
     );
     return (
-      <div className="App">
+      <div className={classes.App}>
         <h1>Hi, I'm a React App</h1>
-        <p className={classes.join(' ')}>This is reworking</p>
+        <p className={assignedClasses.join(' ')}>This is reworking</p>
         {/* <button onClick={this.switchNameHandler}>Switch Name</button> */}
         <button onClick={this.togglePersonsHandler} style={style}>Toggle Persons</button>
         {persons}
