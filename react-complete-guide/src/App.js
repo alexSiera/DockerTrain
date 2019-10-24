@@ -4,7 +4,7 @@ import "./App.css";
 import Person from "./Person/Person";
 import ValidationComponent from "./ValidationComponent/ValidationComponent";
 import CharComponent from "./CharComponent/CharComponent";
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 class App extends Component {
   state = {
     persons: [
@@ -120,6 +120,7 @@ class App extends Component {
       </div>
     );
     return (
+      <StyleRoot>
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p className={classes.join(' ')}>This is reworking</p>
@@ -131,6 +132,7 @@ class App extends Component {
         <ValidationComponent inputTextLength={this.state.paragraphLength} />
         {charComponent}
       </div>
+      </StyleRoot>
     );
   }
 }
