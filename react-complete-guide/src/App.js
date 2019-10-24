@@ -105,7 +105,7 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p style={style}>This is reworking</p>
-        <button onClick={this.switchNameHandler}>Switch Name</button>
+        {/* <button onClick={this.switchNameHandler}>Switch Name</button> */}
         <button onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
         <p>{this.state.paragraphLength}</p>
