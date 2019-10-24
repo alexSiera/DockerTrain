@@ -6,14 +6,17 @@ class App extends Component {
   state = {
     persons: [
       {
+        id: "2oddkwdowodwk",
         name: "Max",
         age: 28
       },
       {
+        id: "sfefewfwefee",
         name: "Many",
         age: 25
       },
       {
+        id: "239192ijfewi",
         name: "Stephanie",
         age: 26
       }
@@ -21,22 +24,14 @@ class App extends Component {
     otherState: "some other value",
     showPersons: false
   };
-  nameChangedHandler = event => {
+  nameChangedHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => p.id === id);
+    const person = { ...this.state.persons[personIndex] };
+    person.name = event.target.value;
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
     this.setState({
-      persons: [
-        {
-          name: "Max",
-          age: 333
-        },
-        {
-          name: event.target.value,
-          age: 1234
-        },
-        {
-          name: "Stephanie",
-          age: 566
-        }
-      ]
+      persons
     });
   };
   onInputEmit = event => {
@@ -74,8 +69,9 @@ class App extends Component {
               <Person
                 name={person.name}
                 age={person.age}
-                key={person.name}
+                key={person.id}
                 click={() => this.deletePersonHandler(index)}
+                changed={event => this.nameChangedHandler(event, person.id)}
               />
             );
           })}
