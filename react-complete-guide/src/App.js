@@ -70,7 +70,8 @@ class App extends Component {
   }
   render() {
     const style = {
-      backgroundColor: "yellow",
+      backgroundColor: "green",
+      color: "white",
       font: "inherit",
       border: "1px solid blue",
       padding: "8px"
@@ -92,6 +93,7 @@ class App extends Component {
           })}
         </div>
       );
+      style.backgroundColor = 'red';
     }
     let charComponent = null;
     charComponent = (
@@ -104,9 +106,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
-        <p style={style}>This is reworking</p>
+        <p>This is reworking</p>
         {/* <button onClick={this.switchNameHandler}>Switch Name</button> */}
-        <button onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        <button onClick={this.togglePersonsHandler} style={style}>Toggle Persons</button>
         {persons}
         <p>{this.state.paragraphLength}</p>
         <input onChange={this.onChangeText} />
