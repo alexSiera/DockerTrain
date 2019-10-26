@@ -14,7 +14,7 @@ const cockpit = props => {
   }
   return (
     <React.Fragment>
-      <h1>Hi, I'm a React App</h1>
+      <h1>{props.title}</h1>
       <p className={assignedClasses.join(" ")}>This is reworking</p>
       <button onClick={props.onTogglePersons} className={btnClass}>
         Toggle Persons
