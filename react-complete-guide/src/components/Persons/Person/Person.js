@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./Person.css";
 const person = ({ name, age, children, click, changed }) => {
+  console.log("[Person.js] rendering!!!, ");
+
   return (
     <div className={classes.Person}>
       <p onClick={click}>
