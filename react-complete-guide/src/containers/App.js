@@ -60,11 +60,18 @@ class App extends Component {
 
     return state;
   }
-  componentWillMount() {
-    console.log("[App.js] componentWillMount, ");
-  }
+  // componentWillMount() {
+  //   console.log("[App.js] componentWillMount, ");
+  // }
   componentDidMount() {
     console.log("[App.js] componentDidMount, ");
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("[App.js] componentDidMount, ");
+    return true;
+  }
+  componentDidUpdate() {
+    console.log("[App.js] componentDidUpdate, ");
   }
   render() {
     console.log("[App.js] render, ");
