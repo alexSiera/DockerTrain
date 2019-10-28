@@ -7,7 +7,18 @@ const cockpit = props => {
     setTimeout(() => {
       alert("saved data to cloud");
     }, 1000);
+    return () => {
+      console.log("[Cockpit.js] clean data");
+    };
   }, []);
+  useEffect(() => {
+    console.log("[Cockpit.js] clean data second use effect");
+
+    return () => {
+      console.log("[Cockpit.js] clean data");
+    };
+  });
+
   const assignedClasses = [];
   let btnClass = "";
   if (props.showPerson) {

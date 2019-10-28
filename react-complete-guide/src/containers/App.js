@@ -28,7 +28,8 @@ class App extends Component {
     otherState: "some other value",
     showPersons: false,
     paragraphValue: [],
-    paragraphLength: 0
+    paragraphLength: 0,
+    showCockpit: true
   };
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => p.id === id);
@@ -88,12 +89,21 @@ class App extends Component {
     }
     return (
       <div className={classes.App}>
-        <Cockpit
-          title={this.props.appTitle}
-          showPersons={this.state.showPersons}
-          persons={this.state.persons}
-          onTogglePersons={this.togglePersonsHandler}
-        />
+        <button
+          onClick={() => {
+            this.setState({ showCockpit: false });
+          }}
+        >
+          Remove cockpit
+        </button>
+        {this.state.showCockpit ? (
+          <Cockpit
+            title={this.props.appTitle}
+            showPersons={this.state.showPersons}
+            persons={this.state.persons}
+            onTogglePersons={this.togglePersonsHandler}
+          />
+        ) : null}
         {persons}
       </div>
     );
