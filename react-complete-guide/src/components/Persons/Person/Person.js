@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./Person.css";
 import Aux from "../../../hoc/Aux";
-const person = ({ name, age, children, click, changed }) => {
+import withClass from "../../../hoc/withClass";
+const Person = ({ name, age, children, click, changed }) => {
   console.log("[Person.js] rendering!!!, ");
 
   return (
@@ -14,4 +15,4 @@ const person = ({ name, age, children, click, changed }) => {
     </Aux>
   );
 };
-export default person;
+export default withClass(Person, classes.Person);
