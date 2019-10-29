@@ -31,7 +31,8 @@ class App extends Component {
     showPersons: false,
     paragraphValue: [],
     paragraphLength: 0,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0
   };
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => p.id === id);
@@ -39,8 +40,11 @@ class App extends Component {
     person.name = event.target.value;
     const persons = [...this.state.persons];
     persons[personIndex] = person;
-    this.setState({
-      persons
+    this.setState((prevState, props) => {
+      return {
+        persons,
+        changeCounter: prevState.changeCounter + 1
+      };
     });
   };
   togglePersonsHandler = () => {
