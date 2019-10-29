@@ -32,7 +32,8 @@ class App extends Component {
     paragraphValue: [],
     paragraphLength: 0,
     showCockpit: true,
-    changeCounter: 0
+    changeCounter: 0,
+    authenticated: false
   };
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => p.id === id);
@@ -62,6 +63,9 @@ class App extends Component {
     const paragraphLength = event.target.value.length;
     this.setState({ paragraphLength, paragraphValue });
   };
+  loginHandler = () => {
+    this.setState({ authenticated: true });
+  };
   static getDerivedStateFromProps(props, state) {
     console.log("[App.js] getDerivedStateFromProps, ", props);
 
@@ -90,6 +94,7 @@ class App extends Component {
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
           changed={this.nameChangedHandler}
+          isAuthentiicated={this.state.authenticated}
         />
       );
     }
@@ -108,6 +113,7 @@ class App extends Component {
             showPersons={this.state.showPersons}
             personsLength={this.state.persons.length}
             onTogglePersons={this.togglePersonsHandler}
+            login={this.loginHandler}
           />
         ) : null}
         {persons}
