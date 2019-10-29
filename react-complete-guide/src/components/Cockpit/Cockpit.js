@@ -1,14 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import classes from "./Cockpit.css";
 const cockpit = props => {
+  const toggleBtnRef = useRef(null);
   useEffect(() => {
     console.log("[Cockpit.js] use Effect");
     //Http request...
-    const timer = setTimeout(() => {
-      alert("saved data to cloud");
-    }, 1000);
+    // const timer = setTimeout(() => {
+    //   alert("saved data to cloud");
+    // }, 1000);
+    toggleBtnRef.current.click();
+
     return () => {
-      clearTimeout(timer);
+      // clearTimeout(timer);
       console.log("[Cockpit.js] clean data");
     };
   }, []);
@@ -35,7 +38,11 @@ const cockpit = props => {
     <React.Fragment>
       <h1>{props.title}</h1>
       <p className={assignedClasses.join(" ")}>This is reworking</p>
-      <button onClick={props.onTogglePersons} className={btnClass}>
+      <button
+        ref={toggleBtnRef}
+        onClick={props.onTogglePersons}
+        className={btnClass}
+      >
         Toggle Persons
       </button>
     </React.Fragment>
