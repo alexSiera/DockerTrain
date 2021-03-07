@@ -1,0 +1,11 @@
+version: '3'
+
+volumes: 
+  mongodb_volume:
+
+services:
+  youtube_statistic:
+    build: StatManeger/
+    restart: always
+    environment: 
+      - TZ=Europe/Moscow
